@@ -22,6 +22,8 @@ public class snakeandladder {
 				if(play==ladder)
 				{
 					pos += dice;
+					if(pos>100)
+						pos -= dice ;
 				}
 				
 				else if(play == snake)
@@ -34,7 +36,7 @@ public class snakeandladder {
 				System.out.println("New position = "+pos);
 			}
 		}
-		System.out.println("The player reached the position 100 and won");
+		System.out.println("The player reached the exact position 100 and won");
 		
 	}
 	
