@@ -13,7 +13,7 @@ public class snakeandladder {
 		int pos = 0;
 		
 		//System.out.println("Number on dice = "+dice);
-		while(pos<=100)
+		while(pos<100)
 		{
 			int dice = rnd.nextInt(6) + 1;
 			int play = rnd.nextInt(3);
