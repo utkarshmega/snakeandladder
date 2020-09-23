@@ -10,31 +10,67 @@ public class snakeandladder {
 		int ladder = 1;
 		int snake = 2;
 		int noplay = 0;
-		int pos = 0;
+		int player1pos = 0;
+		int player2pos = 0;
+		boolean player1 = true;
 		
 		//System.out.println("Number on dice = "+dice);
-		while(pos<100)
+		
+		while(player1pos!=100 && player2pos!=100)
 		{
-			int dice = rnd.nextInt(6) + 1;
-			int play = rnd.nextInt(3);
-			
-			if(play != noplay) {
-				if(play==ladder)
-				{
-					pos += dice;
-				}
+			if(player1)
+			{
+				int dice = rnd.nextInt(6) + 1;
+				int play = rnd.nextInt(3);
 				
-				else if(play == snake)
-				{
-					pos -= dice;
-					if(pos<0)
-						pos = 0;
+				if(play != noplay) {
+					if(play==ladder)
+					{
+						player1pos += dice;
+						if(player1pos>100)
+							player1pos -= 100;
+					}
+					
+					else if(play == snake)
+					{
+						player1pos -= dice;
+						if(player1pos<0)
+							player1pos = 0;
+					}
+					player1 = false;
 				}
+				else
+					player1 = false;
+			}
+			else
+			{
+				int dice = rnd.nextInt(6) + 1;
+				int play = rnd.nextInt(3);
 				
-				System.out.println("New position = "+pos);
+				if(play != noplay) {
+					if(play==ladder)
+					{
+						player2pos += dice;
+						if(player2pos>100)
+							player2pos -= 100;
+					}
+					
+					else if(play == snake)
+					{
+						player2pos -= dice;
+						if(player2pos<0)
+							player2pos = 0;
+					}
+					player1 = true;
+				}
+				else
+					player1 = true;
 			}
 		}
-		System.out.println("The player reached the position 100 and won");
+		if(player1pos==100)
+			System.out.println("The player1 reached the position 100 and won");
+		else
+			System.out.println("The player2 reached the position 100 and won");
 		
 	}
 	
